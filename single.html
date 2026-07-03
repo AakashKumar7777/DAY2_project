@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verdant</title>
+<style>
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+  html{ scroll-behavior: smooth; }
+
+  /* =====================================================
+     PAGE 1 — index.html (watering schedule)
+     ===================================================== */
+  #page1{
+    --green-dark: #10381f;
+    --green-mid: #1c5c33;
+    --green-bright: #1f9d4b;
+    --green-header-row: #1e8b45;
+    --cream: #f7f5ee;
+    --text-dark: #2b2b26;
+    --white: #ffffff;
+
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--green-dark);
+    color: var(--white);
+  }
+
+  #page1 header{
+    background: var(--cream);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 60px;
+  }
+
+  #page1 .logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  #page1 .logo-dot{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: conic-gradient(from 210deg, #2f6b3a, #7fae52, #d9c86b, #2f6b3a);
+    display: inline-block;
+  }
+
+  #page1 nav{
+    display: flex;
+    gap: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+  }
+
+  #page1 nav a{
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+
+  #page1 nav a:hover{
+    text-decoration: underline;
+  }
+
+  #page1 main{
+    padding: 70px 60px 100px;
+    text-align: center;
+  }
+
+  #page1 .eyebrow{
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--green-bright);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  #page1 h1{
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+
+  #page1 .subtitle{
+    font-style: italic;
+    color: #cfe8d8;
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
+  #page1 table{
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: var(--cream);
+    color: var(--text-dark);
+    text-align: left;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  #page1 thead tr{ background: var(--green-header-row); }
+
+  #page1 thead th{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white);
+    font-weight: 700;
+    padding: 18px 30px;
+    font-size: 1rem;
+  }
+
+  #page1 tbody td{
+    padding: 20px 30px;
+    border-bottom: 1px solid #e2e0d5;
+    font-size: 1.05rem;
+  }
+
+  #page1 tbody tr:last-child td{ border-bottom: none; }
+  #page1 .plant-name{ font-weight: 700; }
+
+  #page1 tfoot td{ padding: 20px 30px; font-weight: 700; }
+  #page1 tfoot .note{ font-style: italic; font-weight: 700; }
+
+  @media (max-width: 700px){
+    #page1 header{ flex-direction: column; gap: 16px; padding: 20px; }
+    #page1 nav{ gap: 20px; flex-wrap: wrap; justify-content: center; }
+    #page1 main{ padding: 40px 16px 60px; }
+    #page1 h1{ font-size: 2rem; }
+    #page1 table, #page1 thead, #page1 tbody, #page1 tfoot, #page1 th, #page1 td, #page1 tr{ display: block; }
+    #page1 thead{ display: none; }
+    #page1 tbody td, #page1 tfoot td{
+      border: none;
+      border-bottom: 1px solid #e2e0d5;
+      padding: 10px 20px;
+    }
+    #page1 tbody tr{ padding: 10px 0; border-bottom: 2px solid var(--green-mid); }
+  }
+
+  /* =====================================================
+     PAGE 2 — new.html (hero / plant illustration)
+     ===================================================== */
+  #page2{
+    font-family: "Segoe UI", sans-serif;
+    background: #f9faf7;
+    color: #12326d;
+  }
+
+  #page2 header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 80px;
+  }
+
+  #page2 .logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  #page2 .logo-circle{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd34d, #00d9c0);
+  }
+
+  #page2 nav ul{
+    display: flex;
+    list-style: none;
+    gap: 40px;
+  }
+
+  #page2 nav a{
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 18px;
+  }
+
+  #page2 .hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 80px;
+  }
+
+  #page2 .left{ width: 50%; }
+
+  #page2 .small-text{
+    color: #a6a39a;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  #page2 h1{
+    font-size: 72px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+  }
+
+  #page2 .highlight{
+    background: #f0e7c2;
+    padding: 0 5px;
+  }
+
+  #page2 .description{
+    font-size: 22px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 35px;
+  }
+
+  #page2 .buttons{ display: flex; gap: 20px; }
+
+  #page2 .btn{
+    padding: 15px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  #page2 .primary{ background: #043b3b; color: white; }
+  #page2 .secondary{ border: 2px solid #8b98a8; color: #12326d; }
+
+  #page2 .right{
+    width: 500px;
+    height: 420px;
+    background: linear-gradient(135deg, #55f0d8, #00c7a7);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #page2 .plant{ position: relative; }
+
+  #page2 .stem{
+    width: 10px;
+    height: 160px;
+    background: #073b32;
+    margin: auto;
+  }
+
+  #page2 .leaf{
+    position: absolute;
+    width: 90px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  #page2 .leaf1{ background: #0f8f55; top: 20px; left: -70px; }
+  #page2 .leaf2{ background: #bff8f1; top: 35px; right: -80px; }
+  #page2 .leaf3{ background: #148f5d; top: 90px; left: -70px; }
+
+  #page2 .pot{
+    width: 140px;
+    height: 90px;
+    background: #f2be16;
+    border-radius: 10px;
+    margin-top: -5px;
+  }
+
+  @media (max-width: 900px){
+    #page2 .hero{ flex-direction: column; gap: 50px; }
+    #page2 .left{ width: 100%; }
+    #page2 h1{ font-size: 48px; }
+    #page2 .right{ width: 100%; }
+  }
+
+  /* =====================================================
+     PAGE 3 — hd.html (The Essentials cards)
+     ===================================================== */
+  #page3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e5edf1;
+    color: #2b3a4a;
+  }
+
+  #page3 header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #f4f7f8;
+    border-bottom: 1px solid #dce5e9;
+  }
+
+  #page3 .brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #216a4f;
+  }
+
+  #page3 .brand-icon{
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #f39c12 0%, #27ae60 100%);
+    border-radius: 50%;
+  }
+
+  #page3 nav{ display: flex; gap: 25px; }
+
+  #page3 nav a{
+    text-decoration: none;
+    color: #4a5c6a;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  #page3 nav a:hover{ color: #216a4f; }
+
+  #page3 .hero{ text-align: center; padding: 70px 20px; }
+
+  #page3 .eyebrow{
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #7a8c99;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  #page3 .hero h1{
+    font-size: 2.8rem;
+    color: #2b3a4a;
+    margin-bottom: 60px;
+    font-weight: 500;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+  }
+
+  #page3 .card-grid{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  #page3 .card{
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 35px 25px;
+    width: 300px;
+    text-align: left;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #page3 .card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  #page3 .card:nth-child(1){ border-top-color: #f1c40f; }
+  #page3 .card:nth-child(2){ border-top-color: #3498db; }
+  #page3 .card:nth-child(3){ border-top-color: #e74c3c; }
+
+  #page3 .card-icon{ font-size: 2rem; margin-bottom: 20px; }
+
+  #page3 .card h3{
+    font-size: 1.25rem;
+    color: #1a4d7c;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  #page3 .card p{
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #556a85;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+  @media (max-width: 800px){
+    #page3 .card-grid{ flex-direction: column; align-items: center; }
+    #page3 header{ flex-direction: column; gap: 15px; }
+    #page3 .hero h1{ font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= 1st: hero / plant illustration ================= -->
+<section id="page2">
+  <header>
+    <div class="logo">
+      <div class="logo-circle"></div>
+      Verdant
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#page1">Care</a></li>
+        <li><a href="#page1">Schedule</a></li>
+        <li><a href="#page2">Journal</a></li>
+        <li><a href="#page3">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="left">
+      <p class="small-text">INDOOR PLANT STUDIO</p>
+
+      <h1>
+        Grow a room that
+        <span class="highlight">breathes</span>
+        with you.
+      </h1>
+
+      <p class="description">
+        Verdant is a tiny studio pairing hardy houseplants with simple,
+        honest care advice. No jargon — just greener days.
+      </p>
+
+      <div class="buttons">
+        <a href="#page3" class="btn primary">Start your collection</a>
+        <a href="#page3" class="btn secondary">Learn the basics</a>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="plant">
+        <div class="stem"></div>
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+        <div class="leaf leaf3"></div>
+        <div class="pot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2nd: the essentials cards ================= -->
+<section id="page3">
+  <header>
+    <div class="brand">
+      <div class="brand-icon"></div>
+      Verdant
+    </div>
+    <nav>
+      <a href="#page1">Care</a>
+      <a href="#page1">Schedule</a>
+      <a href="#page2">Journal</a>
+      <a href="#page3">Join</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">The Essentials</div>
+    <h1>Three things every plant asks for</h1>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">☀️</div>
+        <h3>Light</h3>
+        <p>Most houseplants love bright, indirect light. A spot near a window that never gets harsh noon sun is the sweet spot.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💧</div>
+        <h3>Water</h3>
+        <p>Check the top inch of soil. Dry? Water deeply until it drains. Still damp? Wait. Overwatering is the #1 mistake.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌡️</div>
+        <h3>Warmth</h3>
+        <p>Keep them between 18-24°C and away from cold drafts. Steady beats dramatic.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ================= 3rd: watering schedule ================= -->
+<section id="page1">
+  <header>
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <span>Verdant</span>
+    </div>
+    <nav>
+      <a href="#page1">Care</a>
+      <a href="#page1">Schedule</a>
+      <a href="#page2">Journal</a>
+      <a href="#page3">Join</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="eyebrow">Reference</p>
+    <h1>A simple watering schedule</h1>
+    <p class="subtitle">Approximate watering interval by plant type (spring–summer)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Plant</th>
+          <th>Light needs</th>
+          <th>Water every</th>
+          <th>Difficulty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="plant-name">Snake Plant</td>
+          <td>Low – bright</td>
+          <td>2–3 weeks</td>
+          <td>Easy</td>
+        </tr>
+        <tr>
+          <td class="plant-name">Pothos</td>
+          <td>Medium</td>
+          <td>7–10 days</td>
+          <td>Easy</td>
+        </tr>
+        <tr>
+          <td class="plant-name">Monstera</td>
+          <td>Bright indirect</td>
+          <td>7 days</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td class="plant-name">Fiddle-leaf Fig</td>
+          <td>Bright indirect</td>
+          <td>7–10 days</td>
+          <td>Hard</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="note" colspan="3">Reduce watering in winter</td>
+          <td>~40%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </main>
+</section>
+
+</body>
+</html>
