@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verdant — A simple watering schedule</title>
+<style>
+  :root{
+    --green-dark: #10381f;
+    --green-mid: #1c5c33;
+    --green-bright: #1f9d4b;
+    --green-header-row: #1e8b45;
+    --cream: #f7f5ee;
+    --text-dark: #2b2b26;
+    --text-muted: #6b6b60;
+    --white: #ffffff;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  body{
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--green-dark);
+    color: var(--white);
+  }
+
+  header{
+    background: var(--cream);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 60px;
+  }
+
+  .logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-dot{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: conic-gradient(from 210deg, #2f6b3a, #7fae52, #d9c86b, #2f6b3a);
+    display: inline-block;
+  }
+
+  nav{
+    display: flex;
+    gap: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+  }
+
+  nav a{
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+
+  nav a:hover{
+    text-decoration: underline;
+  }
+
+  main{
+    padding: 70px 60px 100px;
+    text-align: center;
+  }
+
+  .eyebrow{
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--green-bright);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  h1{
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+
+  .subtitle{
+    font-style: italic;
+    color: #cfe8d8;
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
+  table{
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: var(--cream);
+    color: var(--text-dark);
+    text-align: left;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  thead tr{
+    background: var(--green-header-row);
+  }
+
+  thead th{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white);
+    font-weight: 700;
+    padding: 18px 30px;
+    font-size: 1rem;
+  }
+
+  tbody td{
+    padding: 20px 30px;
+    border-bottom: 1px solid #e2e0d5;
+    font-size: 1.05rem;
+  }
+
+  tbody tr:last-child td{
+    border-bottom: none;
+  }
+
+  .plant-name{
+    font-weight: 700;
+  }
+
+  tfoot td{
+    padding: 20px 30px;
+    font-weight: 700;
+  }
+
+  tfoot .note{
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  @media (max-width: 700px){
+    header{ flex-direction: column; gap: 16px; padding: 20px; }
+    nav{ gap: 20px; flex-wrap: wrap; justify-content: center; }
+    main{ padding: 40px 16px 60px; }
+    h1{ font-size: 2rem; }
+    table, thead, tbody, tfoot, th, td, tr{ display: block; }
+    thead{ display: none; }
+    tbody td, tfoot td{
+      border: none;
+      border-bottom: 1px solid #e2e0d5;
+      padding: 10px 20px;
+    }
+    tbody tr{ padding: 10px 0; border-bottom: 2px solid var(--green-mid); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span class="logo-dot"></span>
+    <span>Verdant</span>
+  </div>
+  <nav>
+    <a href="#care">Care</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#journal">Journal</a>
+    <a href="#join">Join</a>
+  </nav>
+</header>
+
+<main>
+  <p class="eyebrow">Reference</p>
+  <h1>A simple watering schedule</h1>
+  <p class="subtitle">Approximate watering interval by plant type (spring–summer)</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Plant</th>
+        <th>Light needs</th>
+        <th>Water every</th>
+        <th>Difficulty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="plant-name">Snake Plant</td>
+        <td>Low – bright</td>
+        <td>2–3 weeks</td>
+        <td>Easy</td>
+      </tr>
+      <tr>
+        <td class="plant-name">Pothos</td>
+        <td>Medium</td>
+        <td>7–10 days</td>
+        <td>Easy</td>
+      </tr>
+      <tr>
+        <td class="plant-name">Monstera</td>
+        <td>Bright indirect</td>
+        <td>7 days</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <td class="plant-name">Fiddle-leaf Fig</td>
+        <td>Bright indirect</td>
+        <td>7–10 days</td>
+        <td>Hard</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="note" colspan="3">Reduce watering in winter</td>
+        <td>~40%</td>
+      </tr>
+    </tfoot>
+  </table>
+</main>
+
+</body>
+</html>
